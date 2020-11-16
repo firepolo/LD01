@@ -165,6 +165,7 @@ Map::Map() : globalID(0)
 		}
 	}
 
+	for (int i = 0; i < SIZE.x; ++i) blocks[i] = 2;
 	for (int i = 0; i < SIZE.x; ++i) blocks[(SIZE.y - 1) * SIZE.x + i] = 1;
 	for (int i = 0; i < SIZE.y - 1; ++i) blocks[i * SIZE.x] = 2;
 	for (int i = 0; i < SIZE.y - 1; ++i) blocks[i * SIZE.x + SIZE.x - 1] = 2;
