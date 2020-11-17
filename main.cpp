@@ -47,7 +47,7 @@ public:
 	void AddParticle(Particle* particle);
 
 	UID AddEntity(Entity* entity);
-	void RemoveEntity(UID uid);
+	void KillEntity(UID uid);
 
 	bool IsBlock(const olc::vi2d& position);
 	void Update(float elapsedTime);
@@ -174,6 +174,7 @@ Map::Map() : globalID(0)
 Map::~Map()
 {
 	for (auto& entity : entities) delete entity.second;
+	for (auto& particle : particles) delete particle;
 	delete[] blocks;
 }
 
@@ -199,7 +200,7 @@ UID Map::AddEntity(Entity* entity)
 	return globalID;
 }
 
-void Map::RemoveEntity(UID uid)
+void Map::KillEntity(UID uid)
 {
 	GetEntity(uid)->Kill();
 }
