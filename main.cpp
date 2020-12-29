@@ -212,13 +212,14 @@ bool Map::IsBlock(const olc::vi2d& position)
 
 void Map::Update(float elapsedTime)
 {
-	for (int i = 0; i < particles.size(); ++i)
+	for (int i = 0; i < particles.size();)
 	{
 		if (particles[i]->Update(elapsedTime))
 		{
 			delete particles[i];
 			particles.erase(particles.begin() + i);
 		}
+		else ++i;
 	}
 
 	for (auto it = entities.begin(), end = entities.end(); it != end;)
